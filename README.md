@@ -23,5 +23,5 @@ fmr.Println(maskedValue) // out: ABC-123-4
 Symbol | Meaning
 --- | ---
 `0` | Requires a decimal digit at this position
-`L` | Requires an unicode letter and digit at this position
-`l` | Permits an unicode letter at this position
+`L` | Requires a unicode letter and digit at this position
+`l` | Requires a unicode letter at this position
