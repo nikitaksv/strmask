@@ -6,55 +6,65 @@ import (
 
 func TestApply(t *testing.T) {
 	type args struct {
-		mask string
-		in   string
+		mask  string
+		value string
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
-			name: "1",
+			name: "success",
 			args: args{
-				mask: "LLL-LLL-LLL",
-				in:   "A23456ABC",
+				mask:  "LLL-LLL-LLL",
+				value: "A23456ABC",
 			},
 			want: "A23-456-ABC",
 		},
 		{
-			name: "2",
+			name: "success",
 			args: args{
-				mask: "0000-000-0",
-				in:   "123456789",
+				mask:  "0000-000-0",
+				value: "123456789",
 			},
 			want: "1234-567-8",
 		},
 		{
-			name: "3",
+			name: "success",
 			args: args{
-				mask: "0000-000-0",
-				in:   "9999-123-4",
+				mask:  "0000-000-0",
+				value: "9999-123-4",
 			},
 			want: "9999-123-4",
 		},
 		{
-			name: "4",
+			name: "error",
 			args: args{
-				mask: "0000-000-0",
-				in:   "9999-123-",
+				mask:  "0000-000-0",
+				value: "9999-123-",
 			},
-			want: "",
+			wantErr: true,
+		},
+		{
+			name: "error",
+			args: args{
+				mask:  "0000-000-0",
+				value: "asdasdasdas",
+			},
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, err := Apply(tt.args.mask, tt.args.in); got != tt.want {
-				if err != nil {
-					t.Error(err)
-				} else {
-					t.Errorf("Apply() = %v, want %v", got, tt.want)
-				}
+			got, err := Apply(tt.args.mask, tt.args.value)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Apply() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Apply() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

@@ -8,14 +8,25 @@ go get github.com/nikitaksv/strmask
 
 ## Usage
 ```go
-maskedValue, _ := strmask.Apply("LLL-000-0", "ABC1234")
-fmr.Println(maskedValue) // out: ABC-123-4
+package main
 
-maskedValue, _ = strmask.Apply("LLL-000-0", "ABC-123-4")
-fmr.Println(maskedValue) // out: ABC-123-4 
+import (
+	"fmt"
 
-maskedValue, _ = strmask.Apply("LLL-000-0", "ABC1234XYZ")
-fmr.Println(maskedValue) // out: ABC-123-4 
+	"github.com/nikitaksv/strmask"
+)
+
+func main() {
+	maskedValue, _ := strmask.Apply("LLL-000-0", "ABC1234")
+	fmt.Println(maskedValue) // out: ABC-123-4
+
+	maskedValue, _ = strmask.Apply("LLL-000-0", "ABC-123-4")
+	fmt.Println(maskedValue) // out: ABC-123-4
+
+	maskedValue, _ = strmask.Apply("LLL-000-0", "ABC1234XYZ")
+	fmt.Println(maskedValue) // out: ABC-123-4
+}
+
 ```
 
 
