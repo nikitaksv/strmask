@@ -16,43 +16,69 @@ func TestApply(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "success",
+			name: "mask-# (any letter or digit)",
 			args: args{
-				mask:  "LLL-LLL-LLL",
-				value: "A23456ABC",
+				mask:  "####-####-####-####",
+				value: "qwer TYUI 0123-4567",
 			},
-			want: "A23-456-ABC",
+			want: "qwer-TYUI-0123-4567",
 		},
 		{
-			name: "success",
+			name: "mask-0 (only digit)",
 			args: args{
-				mask:  "0000-000-0",
-				value: "123456789",
+				mask:  "+0 (000) 000-00-00",
+				value: "A12345678900",
 			},
-			want: "1234-567-8",
+			want: "+1 (234) 567-89-00",
 		},
 		{
-			name: "success",
+			name: "mask-L (lower letter or digit)",
 			args: args{
-				mask:  "0000-000-0",
-				value: "9999-123-4",
+				mask:  "LLLL-LLLL",
+				value: "QWER 1234",
 			},
-			want: "9999-123-4",
+			want: "qwer-1234",
 		},
 		{
-			name: "error",
+			name: "mask-l (lower letter)",
 			args: args{
-				mask:  "0000-000-0",
-				value: "9999-123-",
+				mask:  "llll-llll",
+				value: "QWER 1234 zxCV",
 			},
+			want: "qwer-zxcv",
+		},
+		{
+			name: "mask-U (upper letter or digit)",
+			args: args{
+				mask:  "UUUU-UUUU",
+				value: "qwer 1234",
+			},
+			want: "QWER-1234",
+		},
+		{
+			name: "mask-u (upper letter)",
+			args: args{
+				mask:  "uuuu-uuuu",
+				value: "qwer 1234 ASDV",
+			},
+			want: "QWER-ASDV",
+		},
+		{
+			name: "error mask",
+			args: args{
+				mask:  "uuuu-uuuu",
+				value: "123345",
+			},
+			want:    "",
 			wantErr: true,
 		},
 		{
-			name: "error",
+			name: "error mask with value",
 			args: args{
-				mask:  "0000-000-0",
-				value: "asdasdasdas",
+				mask:  "uuuu-uuuu",
+				value: "qwer",
 			},
+			want:    "QWER-",
 			wantErr: true,
 		},
 	}
