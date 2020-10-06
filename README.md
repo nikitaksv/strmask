@@ -8,8 +8,6 @@ go get github.com/nikitaksv/strmask
 
 ## Usage
 
-Playground: https://play.golang.org/p/BUxPS2c2JT6
-
 ```go
 package main
 
