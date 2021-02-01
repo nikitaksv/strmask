@@ -58,3 +58,7 @@ Symbol | Meaning
 `l` | Requires a unicode letter (will be lower) at this position
 `U` | Requires a unicode letter (will be upper) or digit at this position
 `u` | Requires a unicode letter (will be upper) at this position
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnikitaksv%2Fstrmask.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnikitaksv%2Fstrmask?ref=badge_large)
