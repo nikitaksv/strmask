@@ -1,4 +1,9 @@
 # strmask
+
+[![Godoc Reference](https://godoc.org/github.com/nikitaksv/strmask?status.svg)](http://godoc.org/github.com/nikitaksv/strmask)
+[![Coverage Status](https://coveralls.io/repos/github/nikitaksv/strmask/badge.svg?branch=main)](https://coveralls.io/github/nikitaksv/strmask?branch=main)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnikitaksv%2Fstrmask.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnikitaksv%2Fstrmask?ref=badge_shield)
+
 Easy mask for string
 
 ## Install
